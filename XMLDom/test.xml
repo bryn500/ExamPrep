@@ -1,0 +1,21 @@
+﻿<?xml version="1.0"?>
+<books>
+  <book>
+    <author>Carson</author>
+    <price format="dollar">31.95</price>
+    <pubdate>05/01/2001</pubdate>
+    <pubinfo>
+      <publisher>MSPress</publisher>
+      <state>WA</state>
+    </pubinfo>
+  </book>
+  <book>
+    <author>Bob</author>
+    <price format="gbp">1</price>
+    <pubdate>05/01/2002</pubdate>
+    <pubinfo>
+      <publisher>MSPress</publisher>
+      <state>WA</state>
+    </pubinfo>
+  </book>
+</books>

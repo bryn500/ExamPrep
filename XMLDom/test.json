@@ -1,0 +1,16 @@
+{
+  "books": {
+    "book": {
+      "author": "Carson",
+      "price": {
+        "-format": "dollar",
+        "#text": "31.95"
+      },
+      "pubdate": "05/01/2001",
+      "pubinfo": {
+        "publisher": "MSPress",
+        "state": "WA"
+      }
+    }
+  }
+}
