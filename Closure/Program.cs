@@ -15,22 +15,22 @@ namespace Closure
 
             Console.Write("Maximum length of string to include? ");
             int userMaxLength = int.Parse(Console.ReadLine()); // userMaxLength scope is in Main
-            Predicate<string> predicate = item => item.Length < userMaxLength; // we create an anonymous method that uses a variable decalred outside of itself
+            MyPredicate<string> predicate = item => item.Length < userMaxLength; // we create an anonymous method that uses a variable decalred outside of itself
             IList<string> shortWords = ListUtil.Filter(words, predicate); // this method is passed to another method
             ListUtil.Dump(shortWords); // and userMaxLength int is still available
 
             Console.WriteLine("Changing the value of the scoped variable within the predicate:");
             userMaxLength = 0;
-            Predicate<string> predicate2 = item => { userMaxLength++; return item.Length <= userMaxLength; };
+            MyPredicate<string> predicate2 = item => { userMaxLength++; return item.Length <= userMaxLength; };
             IList<string> shortWords2 = ListUtil.Filter(words, predicate2);
             ListUtil.Dump(shortWords2);
         }
 
-        // Declaration for System.Predicate<T>
-        public delegate bool Predicate<T>(T obj);
+        public delegate bool MyPredicate<T>(T obj);
+
         public static class ListUtil
         {
-            public static IList<T> Filter<T>(IList<T> source, Predicate<T> predicate)
+            public static IList<T> Filter<T>(IList<T> source, MyPredicate<T> predicate)
             {
                 List<T> ret = new List<T>();
                 foreach (T item in source)
