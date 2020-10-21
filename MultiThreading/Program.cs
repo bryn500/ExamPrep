@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 /// <summary>
 /// Multi threading allows program to do multiple strands of work at the same time
 /// Stops one strand of work having to wait for another to complete first
-/// Can allow more responsive programs (one part of prgram doesn't freeze because another is working)
+/// Can allow more responsive programs (one part of program doesn't freeze because another is working)
 /// Can speed things up as well depending on scenario
 /// https://docs.microsoft.com/en-us/dotnet/standard/threading/managed-threading-best-practices
 /// Multithreading solves problems with throughput and responsiveness, but in doing so it introduces new problems: deadlocks and race conditions.
@@ -35,14 +35,14 @@ namespace MultiThreading
             var locked = new LockedPrinter(); // using lock    
             var asyncPrinter = new AsyncPrinter();
 
-            var task = asyncPrinter.PrintLetters();
-            ThreadWork(printer);
+            //var task = asyncPrinter.PrintLetters();
+            //ThreadWork(printer);
             //ThreadPoolWork(printer);
             //ParallelForEachWork(printer);
             //ParallelInvoke(printer);
             //TasksWork(printer);
-            //PlinqWork(printer);
-            await task;
+            PlinqWork(printer);
+            //await task;
         }
 
         private void ThreadWork(Printer p)
@@ -128,11 +128,27 @@ namespace MultiThreading
                     printer.PrintNumbers();
                 });
 
-            //.AsOrdered()
-            //.Where(x => x % 2 == 0)
+            // plinq allows you to use AsOrdered chained with AsParallel to ensure the order 
+            var range = Enumerable.Range(0, 20);
+            var unordered = range.AsParallel().Where(x => x % 2 == 0); // multithreaded
+            var backToSequential = range.AsParallel().AsSequential().Where(x => x % 2 == 0); // switched back to single threaded (pointless here but could be needed in another scenario)
+            var ordered = range.AsParallel().AsOrdered().Where(x => x % 2 == 0); // multithreaded with magic to ensure order is preserved - will slow things down
 
-            //.Select(x => new { a = x })
-            //.ToList();
+            Console.WriteLine("Unordered: ");
+            foreach (var i in unordered)
+                Console.Write(i);
+
+            Console.WriteLine("");
+
+            Console.WriteLine("Ordered: ");
+            foreach (var i in ordered)
+                Console.Write(i);
+
+            Console.WriteLine("");
+
+            Console.WriteLine("Sequential: ");
+            foreach (var i in backToSequential)
+                Console.Write(i);
         }
     }
 
