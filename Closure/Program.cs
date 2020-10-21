@@ -3,7 +3,9 @@ using System.Collections.Generic;
 
 /// <summary>
 /// https://csharpindepth.com/Articles/Closures
-/// closures allow you to encapsulate some behaviour, pass it around like any other object, and still have access to the context in which they were first declared
+/// closures allow you to encapsulate some behaviour,
+/// pass it around like any other object, 
+/// and still have access to the context in which they were first declared
 /// </summary>
 namespace Closure
 {
@@ -19,11 +21,11 @@ namespace Closure
             IList<string> shortWords = ListUtil.Filter(words, predicate); // this method is passed to another method
             ListUtil.Dump(shortWords); // and userMaxLength int is still available
 
-            Console.WriteLine("Changing the value of the scoped variable within the predicate:");
-            userMaxLength = 0;
-            MyPredicate<string> predicate2 = item => { userMaxLength++; return item.Length <= userMaxLength; };
-            IList<string> shortWords2 = ListUtil.Filter(words, predicate2);
-            ListUtil.Dump(shortWords2);
+            //Console.WriteLine("Changing the value of the scoped variable within the predicate:");
+            //userMaxLength = 0;
+            //MyPredicate<string> predicate2 = item => { userMaxLength++; return item.Length <= userMaxLength; };
+            //IList<string> shortWords2 = ListUtil.Filter(words, predicate2);
+            //ListUtil.Dump(shortWords2);
         }
 
         public delegate bool MyPredicate<T>(T obj);

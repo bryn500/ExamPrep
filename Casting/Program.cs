@@ -86,6 +86,12 @@ namespace Casting
                 AsTest<SubClass>(test, typeTest.Name);
                 Console.WriteLine("");
             }
+
+            int i = 0;
+            long l = (long)i;
+            long? nl = i as long?;
+            //long nl = i as long; 
+            // can't use as for value types that aren't nullable
         }
 
         public static void TypeTest<TResult>(Type type)
@@ -105,6 +111,7 @@ namespace Casting
             try
             {
                 var result = (TResult)item;
+
                 Console.WriteLine($"Successfully cast {typeName} into {typeOfGeneric}");
             }
             catch

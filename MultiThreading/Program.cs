@@ -36,7 +36,7 @@ namespace MultiThreading
             var asyncPrinter = new AsyncPrinter();
 
             var task = asyncPrinter.PrintLetters();
-            //ThreadWork(printer);
+            ThreadWork(printer);
             //ThreadPoolWork(printer);
             //ParallelForEachWork(printer);
             //ParallelInvoke(printer);
@@ -91,6 +91,9 @@ namespace MultiThreading
             }, () =>
             {
                 printer.PrintNumbers();
+            }, () =>
+            {
+                Console.WriteLine("Hello");
             });
         }
 
@@ -111,18 +114,25 @@ namespace MultiThreading
             //{
             //    Task.Factory.StartNew(p.PrintNumbers);
             //}
-            //Console.ReadLine(); 
+            //Console.ReadLine();
         }
 
         private void PlinqWork(Printer printer)
         {
             var list = Enumerable.Range(0, 10);
 
-            list.AsParallel()
+            list
+                .AsParallel()
                 .ForAll((int i) =>
                 {
                     printer.PrintNumbers();
                 });
+
+            //.AsOrdered()
+            //.Where(x => x % 2 == 0)
+
+            //.Select(x => new { a = x })
+            //.ToList();
         }
     }
 

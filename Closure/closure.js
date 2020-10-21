@@ -11,6 +11,7 @@
     return displayValue;
 }
 
+
 var myFunc1 = makeFunc();
 // scope of makeFunc is over
 // i is out of scope?
@@ -36,6 +37,9 @@ console.log(add10(2)); // 12
 
 
 function makeSizer(size) {
+
+    console.log(size);
+
     return function () {
         document.body.style.fontSize = size + 'px';
     };
@@ -44,6 +48,7 @@ function makeSizer(size) {
 var size12 = makeSizer(12);
 var size14 = makeSizer(14);
 var size16 = makeSizer(16);
+var size18 = makeSizer(18);
 
 
 // from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
