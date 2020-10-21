@@ -19,7 +19,7 @@ namespace Locks
         private static SemaphoreSlim semSlim = new SemaphoreSlim(0, 2);
         // SemaphoreSlim is a version of semaphore used for this process only, not system wide
 
-        // Semaphore is weird, if initial count is set to 0, nothing can access until there is a release      
+        // Semaphore/slim is weird, if initial count is set to 0, nothing can access until there is a release
 
 
         static void Main(string[] args)
