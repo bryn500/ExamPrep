@@ -87,11 +87,11 @@ namespace Casting
                 Console.WriteLine("");
             }
 
-            int i = 0;
-            long l = (long)i;
-            long? nl = i as long?;
-            //long nl = i as long; 
-            // can't use as for value types that aren't nullable
+
+            // don't use as/is for value types:
+            float f = 10.01f;
+            Console.WriteLine((long)f); // cast directly
+            Console.WriteLine(Convert.ToString(f)); // or use Convert.To...
         }
 
         public static void TypeTest<TResult>(Type type)
