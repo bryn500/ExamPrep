@@ -91,7 +91,7 @@ namespace Casting
             // don't use as/is for value types:
             float f = 10.01f;
             Console.WriteLine((long)f); // cast directly
-            Console.WriteLine(Convert.ToString(f)); // or use Convert.To...
+            Console.WriteLine(Convert.ToInt64(f)); // or use Convert.To...
         }
 
         public static void TypeTest<TResult>(Type type)
