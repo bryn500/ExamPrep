@@ -36,11 +36,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Anon", "Anon\Anon.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XMLDom", "XMLDom\XMLDom.csproj", "{F86FB452-6739-493D-BE72-B50197BD38A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Casting", "Casting\Casting.csproj", "{69511792-3656-4F67-B236-FA1911C7F723}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Casting", "Casting\Casting.csproj", "{69511792-3656-4F67-B236-FA1911C7F723}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Closure", "Closure\Closure.csproj", "{0B3783B2-18BE-4B7C-9E8E-9027EE7CF05D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Closure", "Closure\Closure.csproj", "{0B3783B2-18BE-4B7C-9E8E-9027EE7CF05D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiThreading", "MultiThreading\MultiThreading.csproj", "{03924DCF-575D-4993-A880-C9B5B936386D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiThreading", "MultiThreading\MultiThreading.csproj", "{03924DCF-575D-4993-A880-C9B5B936386D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Disposing", "Disposing\Disposing.csproj", "{DA1B3FDA-0EC3-4175-8756-2C739EBD465C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -116,6 +118,10 @@ Global
 		{03924DCF-575D-4993-A880-C9B5B936386D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03924DCF-575D-4993-A880-C9B5B936386D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03924DCF-575D-4993-A880-C9B5B936386D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA1B3FDA-0EC3-4175-8756-2C739EBD465C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA1B3FDA-0EC3-4175-8756-2C739EBD465C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA1B3FDA-0EC3-4175-8756-2C739EBD465C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA1B3FDA-0EC3-4175-8756-2C739EBD465C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
