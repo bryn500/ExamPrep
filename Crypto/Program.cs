@@ -36,7 +36,7 @@
 // Can be used to verify that 2 sets of data are exactly the same
 
 // Passwords
-// Not good by themselves for passwords! Being fast is bad
+// Hashing not good by itself for passwords! Being fast is bad
 // Need to be slow so they can't be brute forced (iterations + size of hash) 
 // Need a salt to stop rainbow tables - random string added to password before hashing and stored next to it in field
 // Will often be in the form: 10000:salt:hashOfPasswordAndSalt, this can be split
@@ -49,16 +49,17 @@
 
 using System;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace Crypto
 {
     public static class Program
     {
-
         static void Main(string[] args)
         {
             Hashing();
-            Encryption();
+            SymmetricEncryption();
+            AsymmetricEncryption();
         }
 
         private static void Hashing()
@@ -83,16 +84,24 @@ namespace Crypto
             Console.WriteLine("pbkdf2 - .net implementation:   {0}", netResult);
         }
 
-        private static void Encryption()
+        private static void SymmetricEncryption()
         {
+            // https://www.youtube.com/watch?v=DLjzI5dX8jc
+            // https://www.youtube.com/watch?v=VYech-c5Dic
+            // https://www.youtube.com/watch?v=O4xNJsjtN6E
+            // https://www.youtube.com/watch?v=9TYfiO__m2A
             // AES
+            // Advanced Encryption Standard - uses rijndael cipher algorithm
+            // 128bit symmetric block cipher (16 bytes)
+            // takes 128 bits of data and encypts into 128bits cipher texts
+            // key size 128/192/256 bit key
+            // sp network - substitution–permutation - replace + shuffle
+            // super fast, instructions on cpu itself as it's a standard
+            // used in things like bitlocker
             string original = "Here is some data to encrypt!";
 
             // Create a new instance of the Aes class.
-            // This generates a new key and initialization
-            // vector (IV).
-            var encryption = new BasicEncryption();
-
+            // This generates a new key and initialization vector (IV).
             byte[] key;
             byte[] IV;
 
@@ -102,6 +111,8 @@ namespace Crypto
                 IV = myAes.IV; // initialization vector - random bytes dumped at start so things look different each time you do it
             }
 
+            var encryption = new BasicEncryption();
+
             // Encrypt the string to an array of bytes.
             byte[] encrypted = encryption.EncryptStringToBytes_Aes(original, key, IV);
             // Decrypt the bytes to a string.
@@ -110,6 +121,45 @@ namespace Crypto
             //Display the original data and the decrypted data.
             Console.WriteLine("Original:   {0}", original);
             Console.WriteLine("Round Trip: {0}", roundtrip);
+        }
+
+        private static void AsymmetricEncryption()
+        {
+            // RSA
+            // Asymmetric encryption
+
+            //Create a UnicodeEncoder to convert between byte array and string.
+            UnicodeEncoding ByteConverter = new UnicodeEncoding();
+
+            string original = "Data to Encrypt";
+            Console.WriteLine("Original:   {0}", original);
+
+            //Create byte arrays to hold original, encrypted, and decrypted data.
+            byte[] dataToEncrypt = ByteConverter.GetBytes(original);
+            byte[] encryptedData;
+            byte[] decryptedData;
+            RSAParameters publicParameters;
+            RSAParameters publicAndPrivateParameters;
+
+            var encryption = new BasicEncryption();
+
+            //Create a new instance of RSACryptoServiceProvider to generate public and private key data.
+            using (RSACryptoServiceProvider RSA = new RSACryptoServiceProvider(BasicEncryption.RSAKeyLength))
+            {
+                publicParameters = RSA.ExportParameters(false);
+                publicAndPrivateParameters = RSA.ExportParameters(true);
+            }
+
+            //Pass the data to ENCRYPT + the public key information
+            //Encrypt with their public key, only they know how to decrypt
+            encryptedData = encryption.RSAEncrypt(dataToEncrypt, publicParameters, false);
+
+            //Pass the data to DECRYPT + the private key information 
+            //They can then decrypt with their private key
+            decryptedData = encryption.RSADecrypt(encryptedData, publicAndPrivateParameters, false);
+
+            //Display the decrypted plaintext to the console. 
+            Console.WriteLine("Decrypted plaintext: {0}", ByteConverter.GetString(decryptedData));
         }
     }
 }
