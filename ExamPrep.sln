@@ -48,6 +48,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Threads", "Threads", "{14E0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Debugging", "Debugging", "{DD45D492-8AA4-4EC0-86EB-D4C7F22EDE40}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Disassemble", "Disassemble\Disassemble.csproj", "{B9C7B797-45AE-47CD-88FA-38F81FBF6640}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -126,6 +128,10 @@ Global
 		{DA1B3FDA-0EC3-4175-8756-2C739EBD465C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA1B3FDA-0EC3-4175-8756-2C739EBD465C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA1B3FDA-0EC3-4175-8756-2C739EBD465C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9C7B797-45AE-47CD-88FA-38F81FBF6640}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9C7B797-45AE-47CD-88FA-38F81FBF6640}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9C7B797-45AE-47CD-88FA-38F81FBF6640}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9C7B797-45AE-47CD-88FA-38F81FBF6640}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -138,6 +144,7 @@ Global
 		{B6F8D85C-B4DD-4F30-9C0C-15AD0AEC6810} = {D65D6984-0689-49A8-AC95-873F64573D33}
 		{C9CE11EB-01E7-4AEB-9A32-35B079BF0FEF} = {D65D6984-0689-49A8-AC95-873F64573D33}
 		{03924DCF-575D-4993-A880-C9B5B936386D} = {14E06903-CF20-497A-A8F8-67A1B76A6F89}
+		{B9C7B797-45AE-47CD-88FA-38F81FBF6640} = {DD45D492-8AA4-4EC0-86EB-D4C7F22EDE40}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6E51A522-0B4B-44B6-8C92-C76CF399C2DE}
