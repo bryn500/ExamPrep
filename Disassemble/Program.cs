@@ -17,7 +17,7 @@
 namespace Disassemble
 {
     /// Unsure how this works in .net core in comparisson to .net4
-    /// To play around with ildasm/idasm use the VS developer console
+    /// To play around with ildasm/idasm use the developer command prompt for visual studio
     /// csc.exe Program.cs 
     /// ildasm /out=mycode.txt Program.exe
     /// Look at generated file to see what the compiler generated
