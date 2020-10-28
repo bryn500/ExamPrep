@@ -1,18 +1,20 @@
 ﻿using System;
 
 /// <summary>
-/// You write c#
-/// This is compiled by a c# compiler Generates: IL (intermidiate language) language-independent and CPU-independent code
-/// This goes through JIT at runtime: generates native instructions for cpu 
-/// At run time, IL runs in the context of .net, which translates IL into CPU-specific instructions for the processor on the computer running the application.
-/// JIT compiler does this
+/// You write c#/f#/vb
+/// This is compiled by a compiler that generates: CIL (common intermidiate language) language-independent and CPU-independent code (previously called MSIL)
+/// csc.exe (c# compiler, other languages will have their own)
+///
+/// The Common Language Runtime (.net framework) CoreCLR (.net core) runs the CIL
+/// At run time, CIL runs in the context of .net, which translates CIL into CPU-specific instructions for the processor on the computer running the application.
+/// This translation is done by a process called JIT (just in time)
 /// 
 /// https://docs.microsoft.com/en-us/dotnet/framework/tools/ildasm-exe-il-disassembler
 /// https://docs.microsoft.com/en-us/dotnet/framework/tools/ilasm-exe-il-assembler
-/// ildasm converts the exe to IL
-/// ilasm converts the Il to exe
-/// exe is a wrapper around the IL
-/// It tells the OS to run the IL in the context of a specific .net runtime
+/// ildasm converts the exe to CIL
+/// ilasm converts the CIl to exe
+/// exe is a wrapper around the CIL
+/// It tells the OS to run the CIL in the context of a specific .net runtime
 /// </summary>
 namespace Disassemble
 {
