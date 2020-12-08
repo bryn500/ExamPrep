@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.InteropServices;
 
 /// <summary>
 /// If a base class implements IDisposable your class should not have IDisposable in the list of its interfaces.
@@ -18,6 +19,20 @@ namespace Disposing
     {
         static void Main(string[] args)
         {
+            object a = new { };
+            GC.KeepAlive(a); // a fake reference to an object. Garbage collector won't delete as there is still a reference (immediately after this line the GC CAN remove it) up to this line, not forever
+            GC.Collect(); // Forces a garbage collection to happen now
+
+            GC.SuppressFinalize(a); // stops the finialze method from being called at any point, often used in dispose method to stop it occurring twice
+            GC.ReRegisterForFinalize(a); // undoes the above, when GC runs if no references, will collect
+            
+            GC.AddMemoryPressure(123); // lets the GC know that a large amount of unmanaged memory has been allocated, this is so the finalize method will be called sooner
+            GC.RemoveMemoryPressure(123); // lets the GC know that a large amount of unmanged memory has been released
+            
+            var ptr = Marshal.AllocHGlobal(1); // allocate memory on unmanged heap
+            Marshal.FreeHGlobal(ptr); // free it
+
+
             var foo1 = new FooSealed();
             foo1.GetHashCode();
             // needs to be disposed. That's what the interface is telling you.
@@ -62,7 +77,7 @@ namespace Disposing
             using (StreamWriter writer = new StreamWriter(stream))
             {
                 writer.Write("Hello StreamWriter");
-            }                
+            }
         }
     }
 
@@ -84,6 +99,8 @@ namespace Disposing
     // Implementation with a finalizer, safer in case someone fails to call dispose
     public class Foo3 : IDisposable
     {
+        IntPtr a;
+
         public void Dispose()
         {
             Dispose(true);
