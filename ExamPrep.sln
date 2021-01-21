@@ -58,6 +58,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerformanceCounters", "Perf
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleQuestions", "ExampleQuestions\ExampleQuestions.csproj", "{36FCF28C-7E5F-43F1-9F86-026D9720D486}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serialization", "Serialization\Serialization.csproj", "{1741C324-1B99-45C7-B82B-05A972D5B5F3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -156,6 +158,10 @@ Global
 		{36FCF28C-7E5F-43F1-9F86-026D9720D486}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36FCF28C-7E5F-43F1-9F86-026D9720D486}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36FCF28C-7E5F-43F1-9F86-026D9720D486}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1741C324-1B99-45C7-B82B-05A972D5B5F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1741C324-1B99-45C7-B82B-05A972D5B5F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1741C324-1B99-45C7-B82B-05A972D5B5F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1741C324-1B99-45C7-B82B-05A972D5B5F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
