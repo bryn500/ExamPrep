@@ -50,11 +50,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Debugging", "Debugging", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Disassemble", "Disassemble\Disassemble.csproj", "{B9C7B797-45AE-47CD-88FA-38F81FBF6640}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reflection", "Reflection\Reflection.csproj", "{AE47F8A1-24AA-494A-96F9-B5C9B926FFD2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reflection", "Reflection\Reflection.csproj", "{AE47F8A1-24AA-494A-96F9-B5C9B926FFD2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exceptions", "Exceptions\Exceptions.csproj", "{700E4514-9056-4438-ACFF-78DEE2CC7858}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exceptions", "Exceptions\Exceptions.csproj", "{700E4514-9056-4438-ACFF-78DEE2CC7858}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerformanceCounters", "PerformanceCounters\PerformanceCounters.csproj", "{816018EA-2EED-4D56-A28E-1704BC37BBE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleQuestions", "ExampleQuestions\ExampleQuestions.csproj", "{36FCF28C-7E5F-43F1-9F86-026D9720D486}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -150,6 +152,10 @@ Global
 		{816018EA-2EED-4D56-A28E-1704BC37BBE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{816018EA-2EED-4D56-A28E-1704BC37BBE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{816018EA-2EED-4D56-A28E-1704BC37BBE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36FCF28C-7E5F-43F1-9F86-026D9720D486}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36FCF28C-7E5F-43F1-9F86-026D9720D486}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36FCF28C-7E5F-43F1-9F86-026D9720D486}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36FCF28C-7E5F-43F1-9F86-026D9720D486}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
