@@ -16,6 +16,9 @@ namespace Crypto
             // with the specified key and IV.
             using (Aes aesAlg = Aes.Create())
             {
+                aesAlg.GenerateIV();
+                aesAlg.GenerateKey();
+
                 aesAlg.Key = Key;
                 aesAlg.IV = IV;
 
@@ -82,16 +85,24 @@ namespace Crypto
             {
                 byte[] encryptedData;
 
-                using (RSACryptoServiceProvider RSA = new RSACryptoServiceProvider(RSAKeyLength))
+                using (var rsa = RSA.Create(RSAKeyLength))
                 {
-
-                    //Import the RSA Key information. This only needs to include the public key information.
-                    RSA.ImportParameters(RSAKeyInfo);
-
-                    //Encrypt the passed byte array and specify OAEP padding.  
-                    encryptedData = RSA.Encrypt(DataToEncrypt, DoOAEPPadding);
+                    rsa.ImportParameters(RSAKeyInfo);
+                    encryptedData = rsa.Encrypt(DataToEncrypt, RSAEncryptionPadding.OaepSHA384);
                 }
+                
                 return encryptedData;
+
+                //using (RSACryptoServiceProvider RSA = new RSACryptoServiceProvider(RSAKeyLength))
+                //{
+
+                //    //Import the RSA Key information. This only needs to include the public key information.
+                //    RSA.ImportParameters(RSAKeyInfo);
+
+                //    //Encrypt the passed byte array and specify OAEP padding.  
+                //    encryptedData = RSA.Encrypt(DataToEncrypt, DoOAEPPadding);
+                //}
+                //return encryptedData;
             }
             catch (CryptographicException e)
             {
@@ -107,15 +118,22 @@ namespace Crypto
             {
                 byte[] decryptedData;
 
-                using (RSACryptoServiceProvider RSA = new RSACryptoServiceProvider(RSAKeyLength))
+                using (var rsa = RSA.Create(RSAKeyLength))
                 {
-                    //Import the RSA Key information. This needs to include the private key information.
-                    RSA.ImportParameters(RSAKeyInfo);
-
-                    //Decrypt the passed byte array and specify OAEP padding.  
-                    decryptedData = RSA.Decrypt(DataToDecrypt, DoOAEPPadding);
+                    rsa.ImportParameters(RSAKeyInfo);
+                    decryptedData = rsa.Decrypt(DataToDecrypt, RSAEncryptionPadding.OaepSHA384);
                 }
                 return decryptedData;
+
+                //using (RSACryptoServiceProvider RSA = new RSACryptoServiceProvider(RSAKeyLength))
+                //{
+                //    //Import the RSA Key information. This needs to include the private key information.
+                //    RSA.ImportParameters(RSAKeyInfo);
+
+                //    //Decrypt the passed byte array and specify OAEP padding.  
+                //    decryptedData = RSA.Decrypt(DataToDecrypt, DoOAEPPadding);
+                //}
+                //return decryptedData;
             }            
             catch (CryptographicException e)
             {

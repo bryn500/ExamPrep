@@ -16,8 +16,7 @@ namespace ExampleQuestions
         //C.AES
         //D.RNGCryptoServiceProvider
         #region Question 1
-        // What is RSA: (algorithm)
-        // Class used: RSACryptoServiceProvider
+        // What is RSA: (algorithm + class)
         /// is an algorithm used to encrypt and decrypt messages. 
         /// It is an asymmetric cryptographic algorithm. 
         /// Asymmetric means that there are two different keys. This is also called public key cryptography, because one of the keys can be given to anyone
