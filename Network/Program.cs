@@ -8,28 +8,24 @@ namespace Network
 {
     public class Program
     {
-        const string url = "https://google.co.uk";
-        const string useragent = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705;)";
+        private const string url = "https://raw.githubusercontent.com/bryn500/.NetCoreTemplate/master/appsettings.json";
+        const string useragent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36";
         static async Task Main(string[] args)
         {
             // Low level HttpWebRequest
             WebRequest request = WebRequest.Create(url);
             request.Headers.Add("user-agent", useragent);
-            // If required by the server, set the credentials.
-            //request.Credentials = CredentialCache.DefaultCredentials;
+
             // Get the response.
             using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
             {
-                //response.StatusDescription
-
-                // Get the stream containing content returned by the server.
                 using (Stream dataStream = response.GetResponseStream())
                 {
-                    // Open the stream using a StreamReader for easy access.
                     using (StreamReader reader = new StreamReader(dataStream))
                     {
-                        // Read the content.
-                        string responseFromServer = reader.ReadToEnd();
+                        Console.WriteLine(response.StatusCode);
+                        string s = reader.ReadToEnd();
+                        Console.WriteLine(s);
                     }
                 }
             }
@@ -43,7 +39,9 @@ namespace Network
                 {
                     using (var reader = new StreamReader(data))
                     {
+                        Console.WriteLine("nowhere to see status code unless there's an exception ?");
                         string s = reader.ReadToEnd();
+                        Console.WriteLine(s);
                     }
                 }
             }
@@ -55,7 +53,9 @@ namespace Network
                 var httpResponse = await httpClient.GetAsync(url);
                 if (httpResponse.IsSuccessStatusCode)
                 {
-                    var result = await httpResponse.Content.ReadAsStringAsync();
+                    Console.WriteLine(httpResponse.StatusCode);
+                    var s = await httpResponse.Content.ReadAsStringAsync();
+                    Console.WriteLine(s);
                 }
             }
         }
